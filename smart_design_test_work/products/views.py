@@ -29,8 +29,7 @@ class ProductView(APIView):
             products = products.filter(title__in=titles)
         parameters = request.data.get('parameters')
         if parameters:
-            for param in parameters:
-                products = products.filter(parameters__contains=param)
+            products = products.filter(parameters__contains=parameters)
 
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
