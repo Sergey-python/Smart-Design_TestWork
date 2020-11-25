@@ -21,7 +21,7 @@ python manage.py runserver
 Далее представлен перечень **curl** команд для выполнения тестового сценария(протестированы в коммандной строке Windows 10):
 1. Создание объетков:
     ```sh
-    curl -H "Content-Type: application/json" -X POST "http://127.0.0.1:8000/api/products/" / -d "{"""products""": [{"""title""": """title_value""", """description""": """description_value""", """parameters""": {"""param""": """param_value"""}},{"""title""": """title_value2""", """description""": """description_value2""", """parameters""": {"""param2""": """param_value2"""}}]}"
+    curl -H "Content-Type: application/json" -X POST "http://127.0.0.1:8000/api/products/" -d "{"""products""": [{"""title""": """value""", """description""": """value""", """parameters""": {"""parameter""": """value"""}},{"""title""": """value2""", """description""": """value2""", """parameters""": {"""parameter1""": """value1""", """parameter2""": """value2"""}}]}"
     ```
 2. Вывод всей коллекции из базы:
     ```sh
@@ -30,7 +30,7 @@ python manage.py runserver
 3. Вывод объектов, отфильтрованных по:
     *ids:*
     ```sh
-       curl -H "Content-Type: application/json" -X GET "http://127.0.0.1:8000/api/products/" -d "{"""ids""":["""1""","""20"""]}"
+       curl -H "Content-Type: application/json" -X GET "http://127.0.0.1:8000/api/products/" -d "{"""ids""":["""5""","""20""","""47"""]}"
     ```
     *titles:*
     ```sh
@@ -38,5 +38,5 @@ python manage.py runserver
     ```
     *parameters:*
     ```sh
-       curl -H "Content-Type: application/json" -X GET "http://127.0.0.1:8000/api/products/" -d "{"""parameters""": {"""param1""": """param1""", """param2""": """param2"""}}"
+       curl -H "Content-Type: application/json" -X GET "http://127.0.0.1:8000/api/products/" -d "{"""parameters""": {"""parameter1""": """value1""", """parameter2""": """value2"""}}"
     ```
