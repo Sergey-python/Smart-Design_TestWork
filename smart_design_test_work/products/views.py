@@ -20,7 +20,7 @@ class ProductView(APIView):
         # if parameter:
         #     products = products.filter(parameters__contains=parameter)
 
-        # Пример использования фильтрации через отправку JSON
+        # Пример использования фильтрации через отправку JSON объекта
         ids = request.data.get('ids')
         if ids:
             products = products.filter(id__in=ids)
@@ -44,6 +44,10 @@ class ProductView(APIView):
         return Response({'error': 'True','detail': 'Need correct data'})
 
     def __get_prod_objects(self, products):
+        """
+        Метод получения экземпляров класса Product
+        для возможности вызова метода bulk_create
+        """
         new_products = []
         for product in products:
             if product.get('title'):
